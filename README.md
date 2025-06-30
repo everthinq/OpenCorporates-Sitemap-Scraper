@@ -24,4 +24,6 @@ Scrape all US companies that are identified by URLs like `/companies/us_XX/` whe
    ```
 ------------------------------------------------------
 ## Watch the video explanation of my solution:
-[![Watch the video](https://img.youtube.com/vi/lMHiTUTG_XA/maxresdefault.jpg)](https://www.youtube.com/watch?v=lMHiTUTG_XA)
+<a href="https://www.youtube.com/watch?v=lMHiTUTG_XA" target="_blank">
+  <img src="https://img.youtube.com/vi/lMHiTUTG_XA/maxresdefault.jpg" alt="Watch the video" width="600">
+</a>

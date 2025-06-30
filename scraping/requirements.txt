@@ -1,0 +1,9 @@
+requests_html
+lxml_html_clean
+redis
+py_mini_racer
+mini-racer
+scrapy
+scrapy-redis
+scrapy-rotating-proxies
+psycopg2-binary

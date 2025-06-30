@@ -1,0 +1,42 @@
+services:
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+  db:
+    image: postgres:alpine
+    container_name: opencorporates_db
+    restart: always
+    environment:
+      POSTGRES_DB: opencorporates_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data://var/lib/postgresql/data
+
+  init_run:
+    build: scraping
+    working_dir: /usr/src/app
+    command: python push_sitemap_links_to_redis.py
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - ./scraping:/usr/src/app
+    restart: "no"
+
+  scrapy:
+    build: scraping
+    working_dir: /usr/src/app
+    command: scrapy crawl opencorporates
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - ./scraping:/usr/src/app
+
+volumes:
+  postgres_data:

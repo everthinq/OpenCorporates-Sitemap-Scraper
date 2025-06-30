@@ -22,3 +22,6 @@ Scrape all US companies that are identified by URLs like `/companies/us_XX/` whe
    ```sh 
    docker compose up --scale scrapy=10
    ```
+------------------------------------------------------
+## Watch the video explanation of my solution:
+[![Watch the video](https://img.youtube.com/vi/lMHiTUTG_XA/maxresdefault.jpg)](https://www.youtube.com/watch?v=lMHiTUTG_XA)

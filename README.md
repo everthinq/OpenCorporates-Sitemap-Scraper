@@ -6,6 +6,16 @@
 Scrape all US companies that are identified by URLs like `/companies/us_XX/` where XX is the state code.
 
 ------------------------------------------------------
+## 🧩 Service Overview
+
+| Service    | Role     | Description |
+|------------|----------|-------------|
+| `redis`    | Queue    | In-memory store used for sharing sitemap links between scripts and spiders. |
+| `db`       | Database | PostgreSQL instance storing the final scraped data. |
+| `init_run` | Seeder   | One-time script that pushes sitemap links into Redis. |
+| `scrapy`   | Spider   | Runs the Scrapy spider that pulls links from Redis and stores data in PostgreSQL. |
+
+------------------------------------------------------
 ## Installation
 1. Clone the repository:
     ```sh 

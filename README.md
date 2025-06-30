@@ -3,7 +3,8 @@
 
 ------------------------------------------------------
 ## Description
-Scrape all US companies are identified by URLs like `/companies/us_XX/` where XX is the state code.
+Scrape all US companies that are identified by URLs like `/companies/us_XX/` where XX is the state code.
+
 ------------------------------------------------------
 ## Installation
 1. Clone the repository:
@@ -13,9 +14,9 @@ Scrape all US companies are identified by URLs like `/companies/us_XX/` where XX
 2. Install docker: https://www.docker.com/
 ------------------------------------------------------
 ## How to run
-1. Go to the project directory, for example:
+1. Go to the project directory with `docker-compose.yml`, for example:
    ```sh 
-   cd ~/Projects/Scrapy/books
+   cd ~/Projects/yourfolder
    ```
 2. Run this to start distrubuted scraping
    ```sh 

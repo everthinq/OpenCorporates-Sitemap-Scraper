@@ -1,18 +1,14 @@
-# Books to scrape
-Scraping [https://books.toscrape.com/](https://books.toscrape.com/)
+# Engineering Challenge: OpenCorporates Sitemap Scraper
+[https://gist.github.com](https://gist.github.com/everthinq/9a9ea4d99e5016e22a17baa9e309572b)
 
 ------------------------------------------------------
 ## Description
-Scrape all book listings from the site, extracting details such as title, price, stock availability, rating, and going to get deeper data from individual book pages (e.g.: UPC, product description)
-
-- URL: https://books.toscrape.com/
-- Structure: Pagination-based e-commerce website.
-- Content: 1000 books across 50 pages.
+Scrape all US companies are identified by URLs like `/companies/us_XX/` where XX is the state code.
 ------------------------------------------------------
 ## Installation
 1. Clone the repository:
     ```sh 
-    git clone https://github.com/everthinq/books.toscrape.com.git
+    git clone https://github.com/everthinq/OpenCorporates-Sitemap-Scraper.git
    ```
 2. Install docker: https://www.docker.com/
 ------------------------------------------------------
@@ -21,7 +17,7 @@ Scrape all book listings from the site, extracting details such as title, price,
    ```sh 
    cd ~/Projects/Scrapy/books
    ```
-2. Run this to get json file:
+2. Run this to start distrubuted scraping
    ```sh 
-   docker compose up
+   docker compose up --scale scrapy=10
    ```

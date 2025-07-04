@@ -4,7 +4,6 @@ import xml.etree.ElementTree as xml_tree
 import redis
 
 from io import BytesIO
-from py_mini_racer import MiniRacer
 from random import choice
 
 BASE_URL = "https://opencorporates.com/sitemap.xml.gz"

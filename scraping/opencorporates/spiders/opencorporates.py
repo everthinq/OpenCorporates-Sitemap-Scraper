@@ -5,7 +5,6 @@ import xml.etree.ElementTree as xml_tree
 
 from io import BytesIO
 from scrapy_redis.spiders import RedisSpider
-from random import choice
 
 
 class OpencorporatesSpider(RedisSpider):

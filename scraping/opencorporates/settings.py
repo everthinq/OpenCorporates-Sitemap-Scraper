@@ -36,7 +36,7 @@ POSTGRES = {
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = "opencorporates (+http://www.yourdomain.com)"
+USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -53,7 +53,7 @@ DOWNLOAD_DELAY = 1
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = True
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False

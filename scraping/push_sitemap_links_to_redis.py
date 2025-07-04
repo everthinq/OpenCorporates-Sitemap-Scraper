@@ -1,5 +1,4 @@
 import requests_html as req
-import time
 import gzip
 import xml.etree.ElementTree as xml_tree
 import redis
@@ -11,19 +10,17 @@ from random import choice
 BASE_URL = "https://opencorporates.com/sitemap.xml.gz"
 
 session = req.HTMLSession()
+session.headers.update(
+    {
+        "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+    }
+)
 
 
 def main():
     """Main function to fetch and process the sitemap XML from OpenCorporates."""
     proxy = get_random_proxy()
     r = session.get(BASE_URL, proxies=proxy)
-    # print(r.content)
-
-    js_code = get_js_code(r)
-    key = run_js_code(js_code)
-
-    time.sleep(1)  # if you don't wait, the cookie will not be set properly
-    r = session.get(BASE_URL, cookies={"KEY": key}, proxies=proxy)
     # print(r.content)
 
     urls = read_gzip(r)
@@ -38,30 +35,13 @@ def get_random_proxy() -> str:
     proxy = choice(ROTATING_PROXY_LIST[0])
     return {"http": proxy, "https": proxy}
 
-
-def get_js_code(r: req.HTML) -> str:
-    """Extract the JavaScript code from the HTML response."""
-    js_code = r.html.xpath("//script")
-    js_code = js_code[0].text if js_code else None
-    js_code = (
-        js_code.replace("<!--", "").replace("//-->", "").strip()
-    )  # replace <!-- and //--> with empty string
-    js_code = (
-        js_code.replace(' { document.cookie="KEY="+', " return ")
-        .replace("; document.location.reload(true); }", "")
-        .replace(";path=/;", "")
-    )  # replace the cookie setting part with return statement
-    return js_code
-
-
-def run_js_code(js_code: str) -> str:
     """Run the JavaScript code via py_mini_racer (embedded V8 for Python) to get the cookie value."""
     ctx = MiniRacer()
 
     ctx.eval(js_code)
     key = ctx.call("go")
 
-    return key
+    return ke
 
 
 def read_gzip(r: req.HTML) -> list[str]:
